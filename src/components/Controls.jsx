@@ -1,6 +1,6 @@
 import React from "react";
 
-function Controls({addR, addC}) {
+function Controls({addR, addC, removeR, removeC}) {
     return (
         <div style={{padding: '1%'}}>
             <button onClick={addR}>
@@ -9,10 +9,10 @@ function Controls({addR, addC}) {
             <button onClick={addC}>
                 Add Col
             </button>
-            <button onClick={() => console.log("removeR()")}>
+            <button onClick={removeR}>
                 Remove Row
             </button>
-            <button onClick={() => console.log("removeC()")}>
+            <button onClick={removeC}>
                 Remove Col
             </button>
             <button onClick={() => console.log("fillU()")}>
