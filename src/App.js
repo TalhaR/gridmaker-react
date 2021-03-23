@@ -11,14 +11,10 @@ function App() {
   const addCol = () => setCols(cols + 1);
 
   const removeRow = () => {
-    if (rows > 0) {
-      setRows(rows - 1);
-    }
+    if (rows > 0) setRows(rows - 1);
   }
   const removeCol = () => {
-    if (cols > 0) {
-      setCols(cols - 1);
-    }
+    if (cols > 0) setCols(cols - 1);
   }
 
   const getRows = () => {
