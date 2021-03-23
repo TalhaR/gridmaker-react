@@ -10,8 +10,16 @@ function App() {
   const addRow = () => setRows(rows + 1);
   const addCol = () => setCols(cols + 1);
 
-  const removeRow = () => setRows(rows - 1);
-  const removeCol = () => setCols(cols - 1);
+  const removeRow = () => {
+    if (rows > 0) {
+      setRows(rows - 1);
+    }
+  }
+  const removeCol = () => {
+    if (cols > 0) {
+      setCols(cols - 1);
+    }
+  }
 
   const getRows = () => {
     const rowsArray = [];
@@ -27,7 +35,9 @@ function App() {
     <div className="App">
       <Controls addR={addRow} addC={addCol} removeR={removeRow} removeC={removeCol}/>
       <table>
-        { getRows() }
+        <tbody>
+          { getRows() }
+        </tbody>
       </table>
 
     </div>
