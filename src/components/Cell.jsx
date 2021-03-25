@@ -1,6 +1,6 @@
-function Cell() {
+function Cell({inputColor}) {
     return (
-        <td> 
+        <td style={{backgroundColor:inputColor}}> 
             
         </td>
     )
