@@ -1,31 +1,69 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Controls from './components/Controls'
 import Row from './components/Row'
 
 function App() {
-  const [rows, setRows] = useState(1);
-  const [cols, setCols] = useState(1);
+  const [matrix, setMatrix] = useState([["white"]]);
 
-  const addRow = () => setRows(rows + 1);
-  const addCol = () => setCols(cols + 1);
+  useEffect(() => {
+    console.log(matrix);
+  }, [matrix])
+
+  const addRow = () => {
+    if (matrix.length === 0) {
+      setMatrix([["white"]]);
+      return;
+    }
+    let newMatrix = [];
+    for (let i = 0; i < matrix.length; i++) {
+      newMatrix.push(matrix[i]);
+    }
+
+    let pushingMatrix = Array(newMatrix[0].length).fill("white");
+    newMatrix.push(pushingMatrix);
+    setMatrix(newMatrix);
+  }
+
+  const addCol = () => {
+    if (matrix.length === 0) {
+      setMatrix([["white"]]);
+      return;
+    }
+    let newMatrix = [];
+    for (let i = 0; i < matrix.length; i++) {
+      newMatrix.push(matrix[i]);
+      newMatrix[i].push("white");
+    }
+    setMatrix(newMatrix);
+  }
 
   const removeRow = () => {
-    if (rows > 0) {
-      setRows(rows - 1);
+    if (matrix.length === 0) return;
+
+    let newMatrix = [];
+    for (let i = 0; i < matrix.length - 1; i++) {
+      newMatrix.push(matrix[i]);
     }
+    setMatrix(newMatrix);
   }
+
   const removeCol = () => {
-    if (cols > 0) {
-      setCols(cols - 1);
+    if (matrix.length === 0) return;
+
+    let newMatrix = [];
+    for (let i = 0; i < matrix.length; i++) {
+      newMatrix.push(matrix[i]);
+      newMatrix[i].pop();
     }
+    setMatrix(newMatrix);
   }
 
   const getRows = () => {
     const rowsArray = [];
 
-    for(let i = 0; i < rows; ++i) {
-      rowsArray.push(<Row key={i} size={cols} />);
+    for(let i = 0; i < matrix.length; ++i) {
+      rowsArray.push(<Row key={i} inputMatrix={matrix[i]} />);
     }
 
     return rowsArray;
