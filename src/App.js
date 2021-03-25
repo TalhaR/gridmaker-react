@@ -11,10 +11,6 @@ function App() {
   }, [matrix])
 
   const addRow = () => {
-    if (matrix.length === 0) {
-      setMatrix([["white"]]);
-      return;
-    }
     let newMatrix = [];
     for (let i = 0; i < matrix.length; i++) {
       newMatrix.push(matrix[i]);
@@ -26,10 +22,6 @@ function App() {
   }
 
   const addCol = () => {
-    if (matrix.length === 0) {
-      setMatrix([["white"]]);
-      return;
-    }
     let newMatrix = [];
     for (let i = 0; i < matrix.length; i++) {
       newMatrix.push(matrix[i]);
@@ -39,7 +31,7 @@ function App() {
   }
 
   const removeRow = () => {
-    if (matrix.length === 0) return;
+    if (matrix.length === 1) return;
 
     let newMatrix = [];
     for (let i = 0; i < matrix.length - 1; i++) {
@@ -49,7 +41,7 @@ function App() {
   }
 
   const removeCol = () => {
-    if (matrix.length === 0) return;
+    if (matrix[0].length === 1) return;
 
     let newMatrix = [];
     for (let i = 0; i < matrix.length; i++) {
