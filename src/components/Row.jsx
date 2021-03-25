@@ -1,21 +1,25 @@
-import Cell from './Cell'
+import Cell from "./Cell";
 
-function Row({ inputMatrix }) {
-    const getCols = () => {
-        const colArray = [];
+function Row({ inputMatrix, rowIndex, changeColor }) {
+  const getCols = () => {
+    const colArray = [];
 
-        for(let i = 0; i < inputMatrix.length; ++i) {
-            colArray.push(<Cell key={i} inputColor={inputMatrix[i]}/>);
-        }
-
-        return colArray;
+    for (let i = 0; i < inputMatrix.length; ++i) {
+      colArray.push(
+        <Cell
+          key={i}
+          inputColor={inputMatrix[i]}
+          rowIndex={rowIndex}
+          changeColor={changeColor}
+          columnIndex={i}
+        />
+      );
     }
 
-    return (
-        <tr>
-            { getCols() }
-        </tr>
-    )
+    return colArray;
+  };
+
+  return <tr>{getCols()}</tr>;
 }
 
-export default Row
+export default Row;
