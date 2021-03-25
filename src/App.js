@@ -27,6 +27,8 @@ function App() {
     return rowsArray;
   }
 
+ 
+
   return (
     <div className="App">
       <Controls addR={addRow} addC={addCol} removeR={removeRow} removeC={removeCol}/>
