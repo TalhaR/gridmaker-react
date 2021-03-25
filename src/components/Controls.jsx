@@ -1,6 +1,6 @@
 import React from "react";
 
-function Controls({addR, addC, removeR, removeC}) {
+function Controls({addR, addC, removeR, removeC, handleC, fillA, fillU}) {
     return (
         <div style={{padding: '1%'}}>
             <button onClick={addR}>
@@ -15,15 +15,22 @@ function Controls({addR, addC, removeR, removeC}) {
             <button onClick={removeC}>
                 Remove Col
             </button>
-            <button onClick={() => console.log("fillU()")}>
+            <button onClick={fillU}>
                 Fill All Uncolored
             </button>
-            <button onClick={() => console.log("fill()")}>
+            <button onClick={fillA}>
                 Fill All
             </button>
             <button onClick={() => console.log("clearAll()")}>
                 Clear
             </button>
+            <select onChange={handleC}>
+                <option value="white">White</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+            </select>
         </div>
     );
 }

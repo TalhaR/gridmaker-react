@@ -5,10 +5,11 @@ import Row from './components/Row'
 
 function App() {
   const [matrix, setMatrix] = useState([["white"]]);
+  const [color, setColor] = useState("white");
 
   useEffect(() => {
-    console.log(matrix);
-  }, [matrix])
+    console.log(matrix, color);
+  }, [matrix, color])
 
   const addRow = () => {
     let newMatrix = [];
@@ -51,6 +52,32 @@ function App() {
     setMatrix(newMatrix);
   }
 
+  const fillAll = () => { 
+    let newMatrix = [];
+    for (const row of matrix) {
+      newMatrix.push(row.fill(color));
+    }
+
+    setMatrix(newMatrix);
+  }
+
+  const fillUncolored = () => { 
+    let newMatrix = [];
+    for (const row of matrix) {
+      const tempRow = [];
+      for (const col of row){
+        if (col !== 'white'){
+          tempRow.push(col);
+        } else { 
+          tempRow.push(color);
+        }
+      }
+      newMatrix.push(tempRow);
+    }
+
+    setMatrix(newMatrix);
+  }
+
   const getRows = () => {
     const rowsArray = [];
 
@@ -63,10 +90,17 @@ function App() {
 
   return (
     <div className="App">
-      <Controls addR={addRow} addC={addCol} removeR={removeRow} removeC={removeCol}/>
+      <Controls addR={addRow}
+                addC={addCol} 
+                removeR={removeRow} 
+                removeC={removeCol} 
+                handleC={(event) => setColor(event.target.value)}
+                fillA={fillAll}
+                fillU={fillUncolored}/>
       <table>
         <tbody>
           { getRows() }
+          
         </tbody>
       </table>
 
