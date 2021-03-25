@@ -1,9 +1,10 @@
-function Cell({inputColor}) {
-    return (
-        <td style={{backgroundColor:inputColor}}> 
-            
-        </td>
-    )
+function Cell({ inputColor, rowIndex, columnIndex, changeColor }) {
+  return (
+    <td
+      onClick={() => changeColor(rowIndex, columnIndex)}
+      style={{ backgroundColor: inputColor }}
+    ></td>
+  );
 }
 
-export default Cell
+export default Cell;
